@@ -28,11 +28,11 @@ img {
 h1 {
   font-size: 50px;
 }
-.winner {
+.victory  {
   color: green;
   border: 10px solid green;
 }
-.loser {
+.defeat {
   color: red;
   border: 10px solid red;
 }
