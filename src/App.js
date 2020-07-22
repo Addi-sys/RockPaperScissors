@@ -7,7 +7,6 @@ import ChoiceCard from './components/ChoiceCard.js'
 export const getRoundOutcome = (user, computer) => {
 
   let result;
-  console.log("hehe", user, computer)
 
   if (user === "rock") {
     result = computer === "scissors" ? "Victory!" : "Defeat!";
@@ -46,18 +45,20 @@ export const CHOICES = {
     name: "rock",
     url:
       "https://opengameart.org/sites/default/files/forum-attachments/very%20simple%20rock_0.png"
+  },
+  defaultValue: {
+    name: "default",
+    url: "http://www.thewateringhole.co.uk/wp-content/uploads/2012/12/play.png"
   }
 };
 
 
 function App() {
-  // const DEFAULT_IMG =
-  //   "http://www.thewateringhole.co.uk/wp-content/uploads/2012/12/play.png";
 
   const [gameHistory, setGameHistory] = useState([]);
   const [prompt, setGamePrompt] = useState("123 Go!")
-  const [playerChoice, setPlayerChoice] = useState(null);
-  const [computerChoice, setComputerChoice] = useState(null);
+  const [playerChoice, setPlayerChoice] = useState(CHOICES.defaultValue);
+  const [computerChoice, setComputerChoice] = useState(CHOICES.defaultValue);
   const [result, setResult] = useState(null)
 
   const onPlayerChoose = playerChoice => {
@@ -74,16 +75,19 @@ function App() {
     setGameHistory(gameHistory);
     setGamePrompt(result);
 
+    console.log(result)
+
 
   };
 
+  
 
   return (
     <div className="App">
       <div className="container">
         <div className="row mb-3">
           <div className="col-md-8 themed-grid-col">
-            <ChoiceCard title="Computer" result={result} imgURL={computerChoice && computerChoice.url} />
+            <ChoiceCard title="Computer" result={result} imgURL={computerChoice.url} />
             <div className="container">
               <button
                 className="btn btn-success btn-lg"
@@ -102,7 +106,7 @@ function App() {
               </button>
             </div>
             <h1>{prompt}</h1>
-            <ChoiceCard title="You" result={result} imgURL={playerChoice && playerChoice.url} />
+            <ChoiceCard title="You" result={result} imgURL={playerChoice.url} />
           </div>
           <div className="col-md-4 themed-grid-col">
             <h3>History</h3>

@@ -2,9 +2,16 @@ import React from 'react'
 
 export default function ChoiceCard(props) {
 
-    let isWinner = (props.title === 'You' && props.result === 'Victory!')
-        || (props.title === 'Computer' && props.result === 'Defeat!')
-    let status = isWinner ? 'victory' : (props.result === 'Tie game!' ? 'tie' : 'defeat')
+    let status;
+    let isWinner;
+
+    if (props.result === null) {
+        status = "";
+    } else {
+        isWinner = (props.title === 'You' && props.result === 'Victory!') || (props.title === 'Computer' && props.result === 'Defeat!')
+        status = isWinner ? 'victory' : (props.result === 'Tie game!' ? 'tie' : 'defeat')
+    }
+
 
     return (
         <div className={`choice-card ${status}`}>

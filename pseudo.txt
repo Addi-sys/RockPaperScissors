@@ -1,0 +1,12 @@
+user clicks on rock
+onPlayerChoose('rock')
+Rock compares with computer choice
+returns result, computerChoice
+
+Player = win
+computer = lose
+
+player = lose
+computer = win
+
+else = tie
